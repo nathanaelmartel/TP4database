@@ -19,9 +19,7 @@ var_dump($current_category['name']);echo '<br />';
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>TP4 database — [Nom de la catégorie]</title>
-    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="/assets/css/tp4.css" type="text/css" />
-    <script src="/assets/js/bootstrap.min.js"></script>
+    <?php include('_head.php') ?>
   </head>
   <body>
     <?php include('_header.php') ?>
@@ -31,11 +29,14 @@ var_dump($current_category['name']);echo '<br />';
         <header>
           <h1>[Nom de la catégorie]</h1>
 
-          <ol class="breadcrumb">
-            <li><a href="/">Accueil</a></li>
-            <li class="active">[Nom de la catégorie]</li>
-          </ol>
+            <nav aria-label="breadcrumb" role="navigation">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.php">Accueil</a></li>
+                <li class="breadcrumb-item active" aria-current="page">[Nom de la catégorie]</li>
+              </ol>
+            </nav>
         </header>
+
 
 
 <?php
@@ -43,28 +44,20 @@ var_dump($current_category['name']);echo '<br />';
   $query = 'SELECT …';
   //$articles = $pdo->query($query);
 ?>
-      <div class="row">
         <?php //foreach ($articles as $article): ?>
-          <div class="col-md-4 col-sm-6">
             <article>
-              <div class="panel panel-primary">
-                <div class="panel-heading">
-                  <h2 class="panel-title">[titre de l'article 1]</h2>
-                  <span class="label label-default">[auteur de l'article 1]</span>
+                <div class="card mt-3 mb-3">
+                    <h2 class="card-header">
+                        [titre de l'article 1]
+                        <span class="badge badge-secondary">[auteur de l'article 1]</span>
+                    </h2>
+                  <div class="card-body">
+                    <p class="card-text">[Résumé de l'article 1]</p>
+                    <a href="post.php?id=[article id]" class="btn btn-primary" title="[titre de l'article 1]">Lire la suite de l'article 1</a>
+                  </div>
                 </div>
-                <div class="panel-body">
-                  [Résumé de l'article 1]
-                  <p class="text-right">
-                    <a class="btn btn-primary" href="/article.php?id=[article id]" role="button" title="[titre de l'article 1]">
-                      Lire la suite
-                    </a>
-                  </p>
-                </div>
-              </div>
             </article>
-          </div>
         <?php //endforeach ?>
-      </div>
 
 
       </section>

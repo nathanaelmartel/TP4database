@@ -7,8 +7,8 @@ var_dump($current_category_id);echo '<br />';
 $query = 'SELECT * FROM category WHERE id='.$current_category_id;
 var_dump($query);echo '<br />';
 
-$current_category_result = $pdo->query($query);
-$current_category = $current_category_result->fetch();
+//$current_category_result = $pdo->query($query);
+//$current_category = $current_category_result->fetch();
 
 var_dump($current_category['name']);echo '<br />';
 
@@ -19,9 +19,7 @@ var_dump($current_category['name']);echo '<br />';
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>TP4 database — [Nom de l'article]</title>
-    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="/assets/css/tp4.css" type="text/css" />
-    <script src="/assets/js/bootstrap.min.js"></script>
+    <?php include('_head.php') ?>
   </head>
   <body>
     <?php include('_header.php') ?>
@@ -31,11 +29,13 @@ var_dump($current_category['name']);echo '<br />';
         <header>
           <h1>[Nom de l'article]</h1>
 
-          <ol class="breadcrumb">
-            <li><a href="/">Accueil</a></li>
-            <li><a href="/category.php?id=[category id]">[Nom de la catégorie]</a></li>
-            <li class="active">[Nom de l'article]</li>
-          </ol>
+          <nav aria-label="breadcrumb" role="navigation">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="index.php">Accueil</a></li>
+              <li class="breadcrumb-item">[Nom de la catégorie]</li>
+              <li class="breadcrumb-item active" aria-current="page">[Nom de l'article]</li>
+            </ol>
+          </nav>
 
         </header>
 
@@ -50,7 +50,7 @@ var_dump($current_category['name']);echo '<br />';
       </article>
 
       <aside>
-        <?php //require_once('_commentaires.php'); ?>
+        <?php //require_once('_comments.php'); ?>
       </aside>
     </div>
 

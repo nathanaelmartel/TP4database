@@ -25,14 +25,23 @@ if (isset($_POST['nom']) && isset($_POST['commentaire'])) {
 </div>
 
 
+<div class="card mt-3 mb-3">
+    <h2 class="card-header">
+        [auteur commentaire]
+        <span class="badge badge-secondary">[date commentaire]</span>
+    </h2>
+  <div class="card-body">
+    <p class="card-text">[commentaire]</p>
+  </div>
+</div>
 
 
 
 
 <?php /* formulaire de commentaire */ ?>
-<div class="panel panel-info">
-  <div class="panel-heading">Votre avis ?</div>
-  <div class="panel-body">
+<div class="card mt-3 mb-3 border-info">
+  <div class="card-header text-white bg-info">Votre avis ?</div>
+  <div class="card-body">
 
     <form action="" method="POST">
       <div class="form-group">
