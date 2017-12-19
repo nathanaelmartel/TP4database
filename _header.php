@@ -38,3 +38,7 @@
 </div>
      </nav>
 </header>
+
+<div class="container" >
+<?php show_flash() ?>
+</div>

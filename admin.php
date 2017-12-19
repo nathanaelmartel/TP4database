@@ -105,7 +105,7 @@ $users = $pdo->query('SELECT * FROM user');
                                       <?php echo $comment['post_id'] ?>
                                   </a>
                               </td>
-                              <td><?php echo $comment['author_id'] ?></td>
+                              <td><?php echo $comment['author'] ?></td>
                               <td><?php echo $comment['comment'] ?></td>
                               <td><?php echo $comment['published_at'] ?></td>
                             </tr>
