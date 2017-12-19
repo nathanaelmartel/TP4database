@@ -2,7 +2,6 @@
 <IfModule mod_rewrite.c>
     Options +FollowSymlinks
     RewriteEngine On
-	LogLevel mod_rewrite.c:trace8
 
     RewriteRule ^admin$ admin.php
     RewriteRule ^categorie/(.+)$ categorie.php?id=$1 [L]
