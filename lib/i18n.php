@@ -1,5 +1,12 @@
 <?php
 
+
+/*
+ * Traduction de données non structuré.
+ * (Cette méthode ne s'applique pas à vos données structurées comme les références, formations, compétences…)
+ */
+
+
 /* Structure de la table i18n (internationalization)
 CREATE TABLE `i18n` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -29,8 +36,8 @@ function get_lang()
 }
 
 /*
- * Charge toutes les traductions de cette chaine une première fois
- * et les stocke dans un tableau associatif
+ * Charge toutes les traductions de cette langue une première fois et les stocke dans un tableau associatif
+ * Note: On pourrait choisir de stocker ces informations autre part : fichier .po (gettext) ou .xml (xliff)
  */
 function load_translation()
 {
