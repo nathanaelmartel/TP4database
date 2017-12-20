@@ -4,6 +4,7 @@
 /*
  * Traduction de données non structuré.
  * (Cette méthode ne s'applique pas à vos données structurées comme les références, formations, compétences…)
+ * Utilisation: dans votre HTML, utilise simplement <?php echo __('sitename') ?> pour avoir la traduction de sitename.
  */
 
 
