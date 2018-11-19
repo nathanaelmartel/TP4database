@@ -24,8 +24,8 @@
                </a>
            </li>
 
-           <?php /*$categories = $pdo->query('SELECT * FROM category'); ?>
-           <?php foreach ($categories as $category): ?>
+           <?php /*$nav_categories = $pdo->query('SELECT * FROM category'); ?>
+           <?php foreach ($nav_categories as $category): ?>
                <li class="nav-item">
                    <a class="nav-link" href="categorie.php?id=<?php echo $category['id'] ?>">
                        <?php echo $category['name'] ?>

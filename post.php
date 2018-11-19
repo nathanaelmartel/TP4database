@@ -1,16 +1,34 @@
 <?php
 require_once('_config.php');
+$post_id = $_GET['id'];
 
-$current_category_id = $_GET['id'];
-var_dump($current_category_id);echo '<br />';
+$query = 'SELECT *
+FROM post
+WHERE post.id='.$pdo->quote($_GET['id']);
+//var_dump($query);echo '<br />';
 
-$query = 'SELECT * FROM category WHERE id='.$current_category_id;
-var_dump($query);echo '<br />';
+$current_post_result = $pdo->query($query);
+/* gestion article manquant : erreur 404 *//*
+if ($current_post_result->rowcount() == 0) {
+    add_flash('warning', 'Erreur 404 : l\'article n\'existe pas.');
+    header('Location: '.$root_url);
+}
+$current_post = $current_post_result->fetch();*/
 
-//$current_category_result = $pdo->query($query);
-//$current_category = $current_category_result->fetch();
+$current_post['id'];
 
-var_dump($current_category['name']);echo '<br />';
+/* traitement du formulaire de commentaire *//*
+if (isset($_POST['nom']) && isset($_POST['commentaire'])) {
+  // requête d'ajout du commentaire :
+  $query = sprintf('INSERT INTO comment (post_id, author, comment, published_at) VALUES (%s, %s, %s, NOW())', $current_post['id'], $pdo->quote($_POST['nom']), $pdo->quote($_POST['commentaire']));
+  $result = $pdo->exec($query);
+  if ($result) {
+      add_flash('success', 'Merci pour votre commentaire');
+      header('Location: '.$root_url.'post.php?id='.$current_post['id']);
+  }
+}*/
+
+//var_dump($current_category['name']);echo '<br />';
 
 ?>
 <!DOCTYPE html>
@@ -18,7 +36,7 @@ var_dump($current_category['name']);echo '<br />';
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TP4 database — [Nom de l'article]</title>
+    <title>TP4 database — <?php echo $current_post['title'] ?></title>
     <?php include('_head.php') ?>
   </head>
   <body>
@@ -27,30 +45,30 @@ var_dump($current_category['name']);echo '<br />';
     <div class="container">
       <article>
         <header>
-          <h1>[Nom de l'article]</h1>
+          <h1><?php echo $current_post['title'] ?></h1>
 
           <nav aria-label="breadcrumb" role="navigation">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="index.php">Accueil</a></li>
-              <li class="breadcrumb-item">[Nom de la catégorie]</li>
-              <li class="breadcrumb-item active" aria-current="page">[Nom de l'article]</li>
+              <li class="breadcrumb-item"><?php echo $current_post['category_name'] ?></li>
+              <li class="breadcrumb-item active" aria-current="page"><?php echo $current_post['title'] ?></li>
             </ol>
           </nav>
 
         </header>
 
         <div>
-          [contenu de l'article]
+          <?php echo $current_post['content'] ?>
         </div>
 
         <footer>
-          <p>Publié le <span class="label label-default">[date article]</span> par <span class="label label-default">[auteur de l'article]</span></p>
+          <p>Publié le <span class="label label-default"><?php echo $current_post['published_at'] ?></span> par <span class="label label-default"><?php echo $current_post['name'] ?></span></p>
         </footer>
 
       </article>
 
       <aside>
-        <?php //require_once('_comments.php'); ?>
+        <?php require_once('_comments.php'); ?>
       </aside>
     </div>
 

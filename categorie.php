@@ -42,9 +42,9 @@ var_dump($current_category['name']);echo '<br />';
 <?php
   // Requête pour récupérer tous les articles de la catégorie
   $query = 'SELECT …';
-  //$articles = $pdo->query($query);
+  //$posts = $pdo->query($query);
 ?>
-        <?php //foreach ($articles as $article): ?>
+        <?php //foreach ($posts as $post): ?>
             <article>
                 <div class="card mt-3 mb-3">
                     <h2 class="card-header">

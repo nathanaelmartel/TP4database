@@ -1,39 +1,30 @@
 <?php
 
-/* traitement du formulaire de commentaire */
-if (isset($_POST['nom']) && isset($_POST['commentaire'])) {
-  var_dump($_POST['nom']);echo '<br />';
-  var_dump($_POST['commentaire']);echo '<br />';
-  // requête d'ajout du commentaire :
-  $query = 'INSERT…';
-  //$pdo->exec($query);
-}
 
 
 
 /* récupérer et afficher les commentaire relatif à l'article */
 
+$query = 'SELECT * FROM comment WHERE post_id='.$current_post['id'];
+$comment_result = $pdo->query($query);
 ?>
-<div class="panel panel-default">
-  <div class="panel-heading">
-    [auteur commentaire]
-    <span class="label label-info">[date commentaire]</span>
-  </div>
-  <div class="panel-body">
-    [commentaire]
-  </div>
-</div>
 
 
-<div class="card mt-3 mb-3">
-    <h2 class="card-header">
-        [auteur commentaire]
-        <span class="badge badge-secondary">[date commentaire]</span>
-    </h2>
-  <div class="card-body">
-    <p class="card-text">[commentaire]</p>
-  </div>
-</div>
+<?php if ($comment_result->rowCount() > 0): ?>
+    <?php foreach ($comment_result as $comment): ?>
+        <div class="card mt-3 mb-3">
+            <h2 class="card-header">
+                <?php echo $comment['author'] ?>
+                <span class="badge badge-secondary"><?php echo $comment['published_at'] ?></span>
+            </h2>
+          <div class="card-body">
+            <p class="card-text"><?php echo $comment['comment'] ?></p>
+          </div>
+        </div>
+    <?php endforeach ?>
+<?php else: ?>
+    <div class="alert alert-info" role="alert">Il n'y a pas encore de commentaire, soyez le premier !</div>
+<?php endif ?>
 
 
 
