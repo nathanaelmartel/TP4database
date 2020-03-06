@@ -3,7 +3,7 @@ $begin_time = microtime(true);
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
-$pdo = new PDO('mysql:host=localhost;dbname=imap','root','100282');
+$pdo = new PDO('mysql:host=localhost;dbname=imap;charset=UTF8','root','');
 
 session_start();
 $root_url = 'http://tp4bdd.local/';
