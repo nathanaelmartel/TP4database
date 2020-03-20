@@ -12,6 +12,7 @@ $current_post_result = $pdo->query($query);
 if ($current_post_result->rowcount() == 0) {
     add_flash('warning', 'Erreur 404 : l\'article n\'existe pas.');
     header('Location: '.$root_url);
+    die;
 }
 $current_post = $current_post_result->fetch();*/
 
